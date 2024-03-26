@@ -1,6 +1,4 @@
 @extends('layouts.main')
-
-
  @section('content')
     <div class="menu-container">
         <div class="menu-item">
@@ -9,11 +7,10 @@
             <p class="php">₱ 100</p>
 
         </div>
-
         <div class="menu-item">
           <img class="Sweet Spaghetti" src="{{ asset('img/pancit-1-MPs.png') }}" alt="Sweet Spaghetti">
           <p>Sweet Spaghetti</p><br>
-          <p class="php">₱ 100</p>
+          <p class="php">₱ 100</p>  
       </div>
 
         <div class="menu-item">
@@ -32,8 +29,8 @@
         <img class="Fish Fillet" src="{{ asset('img/-UGV.png') }}" alt="Fish Fillet">
         <p>Fish Fillet</p><br>
         <p class="php">₱ 40</p>
-    </div>
-
+      </div>
+      
         <div class="menu-item">
             <img class="Coke Mismo" src="{{ asset('img/-j8h.png') }}" alt="Coke Mismo">
             <p>Coke Mismo</p><br>
@@ -88,7 +85,22 @@
 
         </div>
 
-   <div>
+    <div class="Order-Menu d-flex flex-column justify-content-between py-5 px-4">
+        <div class="">
+            <h2>ORDER MENU</h2>
+            <ul class="order-list">
+                <!-- List items for order items -->
+                <!-- Example: -->
+                <li class="mt-5">Fried Chicken - ₱100</li>
+                <!-- Add more list items for other menu items -->
+            </ul>
+        </div>
+        <div class="d-flex gap-3">
+            <button class="order-button">Order</button>
+            <p class="total">Total: ₱100</p>
+        </div>
+    </div>
+</div>
 
 @endsection
 

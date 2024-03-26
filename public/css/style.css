@@ -2,20 +2,16 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #5c0000;
-    color:#5c0000;
+    background-color: #470505; 
+    color:#290808;
     display: flex;
     flex-direction: column;
     align-items: center;
     
 }
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     background-color: lightgray;
-    color: #8b0000;
+    color: #290808;
     text-align: center;
     padding: 20px;
     width: 100%;
@@ -26,18 +22,11 @@
 
 
 
-}
-
-.logo {
-    width: 200px;
-    height: 81px;
-    margin-right: 1160px;
-    display: flex;
-
-
-}
-.header h2 {
+    }
+    .header h2 {
     margin: 0;
+    font-family: Harmattan, 'Source Sans Pro';
+    color: #290808;
 }
 
 .menu-container {
@@ -46,10 +35,10 @@
     justify-content: auto;
     gap: 22px;
     margin-top: 111px;
-    width: calc(91% - 102px);
+    width: calc(90% - 102px);
     max-width: 1139px;
-    padding: -4px;
-    margin-right: 215px;
+    padding: 20px;
+    margin-right: 215px;    
 }
 
 
@@ -59,17 +48,18 @@ order: -1; /* Set order to -1 to move it to the beginning */
 
 .menu-item {
     text-align: center;
-    border-radius: 39px;
+    border-radius: 20px;
     background-color: #fff;
     padding: 10px;
     margin: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: calc(15% - 13px);
-    height: 183px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 .menu-item img {
     width: 100px;
@@ -90,10 +80,10 @@ position: absolute;
 top: 32%;
 right: 0;
 transform: translateY(-50%); /* Center vertically */
-background-color: #f2f2f2;
+background-color: green;
 color: #333;
 padding: 10px;
-border-radius: 10px;
+border-radius: 15px;
 height: auto;
 width: 15%;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -130,3 +120,52 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 .order-btn:hover {
     background-color: #0056b3;
 }
+
+    .Order-Menu {
+        position: absolute; /* Fixed position to keep it in view */
+        margin-top: 330px; /* Adjust as needed */
+        right: 32px; /* Adjust as needed */
+        transform: translateY(-50%); /* Center vertically */
+        background-color: lightgray;
+        border: 1px solid #ccc;
+        width: 346.61px;
+        border-radius: 20px;
+        height: 655px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 999; /* Ensure it's above other elements */
+    }
+    .Order-Menu h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .order-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .order-list li {
+        margin-bottom: 10px;
+    }
+    
+    .order-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .order-button:hover {
+        background-color: #0056b3;      
+    }
+    
+    .total {
+        font-size: 18px;
+        color: #555;
+        margin-top: 15px;
+    }   
+
