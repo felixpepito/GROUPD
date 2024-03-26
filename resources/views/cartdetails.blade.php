@@ -1,32 +1,34 @@
-@extends('layouts.main')
+@extends('layouts.cartdetails')
 
 @section('cartdetails-content')
 <div class="menu-container">
-     
-      <div class="Order-Menu mt-4" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);">
-            <form ation="#" method="#">
-                <h1> Cart Details </h1>
-              
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" required>
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Order</button>
-            </form>
+    <div class="Order-Menu mt-4" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-40%);">
+        <div>
+            <h1>Cart Details</h1>
+
+            <div class="mb-3">
+                <label for="order_number" class="form-label">Order Number</label>
+                <p id="order_number">123456</p>
+            </div>
+            <div class="mb-3">
+                <label for="student_name" class="form-label">Student Name</label>
+                <p id="student_name">John Doe</p>
+            </div>
+            <div class="mb-3">
+                <label for="student_id" class="form-label">Student ID</label>
+                <p id="student_id">S12345</p>
+            </div>
+            <div class="mb-3">
+                <label for="cellphone_number" class="form-label">Cellphone Number</label>
+                <p id="cellphone_number">123-456-7890</p>
+            </div>
         </div>
+        <form action="ordersuccess">
+            <button class="order-button" >submit</a></button>
+            </form>
     </div>
+</div>
+
 
 
 @endsection

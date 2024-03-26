@@ -96,7 +96,9 @@
             </ul>
         </div>
         <div class="d-flex gap-3">
-            <button class="order-button">Order</button>
+            <form action="customerdetails">
+            <button class="order-button">button</a></button>
+            </form>
             <p class="total">Total: ₱100</p>
         </div>
     </div>
