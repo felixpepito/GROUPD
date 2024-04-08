@@ -1,0 +1,49 @@
+body {
+    background-color:  #470505;
+
+}
+
+.container {
+    position: relative;
+    margin-bottom: 20px;
+
+}
+
+.midiv {
+    background-color: white ;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.success {
+    font-size: 36px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.button {
+    background-color:rgb(243, 134, 9);
+    color:white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:background-color 0.3s ease;
+    border-radius: 10px;
+    font-weight: bold;
+    position:auto;
+}
+
+.button:hover {
+    color:black;
+}
+
+
+@media (max-width: 768px) {
+    .midiv {
+        padding: 10px;
+    }
+}

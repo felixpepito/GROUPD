@@ -13,15 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/main', function () {
-    return view('main');
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
+Route::get('main', function () {
+    return view(' layouts/main');
+});
 Route::get('/mainpage', function () {
     return view('mainpage');
 });
 
-Route::get('customerdetails', function () {
+Route::get('/customerdetails', function () {
     return view('customerdetails');
 });
 
@@ -33,3 +37,10 @@ Route::get('/ordersuccess', function () {
     return view('ordersuccess');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/admin', function () {
+    return view('admin');
+});

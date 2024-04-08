@@ -1,0 +1,100 @@
+body {
+    background-color:  #470505;
+
+}
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: auto;
+    gap: 22px;
+    margin-top: 111px;
+    width: calc(90% - 102px);
+    max-width: 1139px;
+    padding: 20px;
+    margin-right: 215px;
+}
+
+.menu-item {
+    text-align: center;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(15% - 13px);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.menu-item p {
+    margin: 0;
+    font-size: 16px;
+
+
+}
+
+    .Order-Menu {
+        position: absolute; /* Fixed position to keep it in view */
+        margin-top: 330px; /* Adjust as needed */
+        right: 32px; /* Adjust as needed */
+        transform: translateY(-50%); /* Center vertically */
+        background-color: white;
+        border: 1px solid #ccc;
+        width: 346.61px;
+        border-radius: 20px;
+        height: 655px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 999; /* Ensure it's above other elements */
+    }
+    .Order-Menu h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .order-list {
+        list-style-type: none;
+        padding:20px;
+    }
+
+    .order-list li {
+        margin-bottom: 10px;
+    }
+
+
+
+    .btn {
+        background-color: #e07c09;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 20px;
+        font-size: 22px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+    }
+
+
+
+
+
+    .order-button:hover {
+       background-color: #ffff;
+       color: black;
+       border-radius: 50px;
+
+
+    }
+ .order-button {
+    display: block;
+    margin: 0 auto;
+
+}

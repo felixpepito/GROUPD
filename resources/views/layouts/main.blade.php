@@ -1,18 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPC ONLINE CAFETERIA</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link  href="css/style.css"   rel="stylesheet">
-    
+    <title>ONLINE CAFETERIA</title>
+    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/customer.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/cart.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/order.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/home.css')}}" rel="stylesheet" />
 </head>
 <body>
-    <div class="header">  
-      <h2> SPC ONLINE CAFETERIA</h2>
-          </div> 
+    @yield('navbar')
+    <nav class="navbar bg-white ">
+        <div class="container-fluid   ">
+
+            <img src="{{ asset('img/spclogo.png')}}" alt="Logo" width="200" height="70" class="d-inline-block align-text-top">
+          </a>
+
+          <div class="container  ml-5 " >
+            <h1 class="display-3 text-weight-boldx  "> ONLINE CAFETERIA</h1>
+        </div>
+        </div>
+      </nav>
+      @show
+      @yield('content')
+      @yield('extra')
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+</body>
+</html>
         <div class="mydiv">
       </div>
     <div class="auto-group-xgjq-XKK">

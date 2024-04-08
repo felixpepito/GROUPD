@@ -1,6 +1,7 @@
 @extends('layouts.main')
- @section('content')
-    <div class="menu-container">
+
+@section('extra')
+    <div class="menu-container " >
         <div class="menu-item">
             <img class="fried-chicken" src="{{ asset('img/manok-1-CGd.png') }}" alt="Fried Chicken">
             <p>Fried Chicken</p><br>
@@ -10,7 +11,7 @@
         <div class="menu-item">
           <img class="Sweet Spaghetti" src="{{ asset('img/pancit-1-MPs.png') }}" alt="Sweet Spaghetti">
           <p>Sweet Spaghetti</p><br>
-          <p class="php">₱ 100</p>  
+          <p class="php">₱ 100</p>
       </div>
 
         <div class="menu-item">
@@ -30,7 +31,7 @@
         <p>Fish Fillet</p><br>
         <p class="php">₱ 40</p>
       </div>
-      
+
         <div class="menu-item">
             <img class="Coke Mismo" src="{{ asset('img/-j8h.png') }}" alt="Coke Mismo">
             <p>Coke Mismo</p><br>
@@ -57,7 +58,7 @@
             <p>Gatorade</p><br>
             <p class="php">₱ 40</p>
         </div>
-		
+
         <div class="menu-item">
             <img class="Fries" src="{{ asset('img/-ATP.png') }}" alt="Fries">
             <p>Fries</p><br>
@@ -86,7 +87,7 @@
         </div>
 
     <div class="Order-Menu d-flex flex-column justify-content-between py-5 px-4">
-        <div class="">
+        <div class="order">
             <h2>ORDER MENU</h2>
             <ul class="order-list">
                 <!-- List items for order items -->
@@ -95,16 +96,20 @@
                 <!-- Add more list items for other menu items -->
             </ul>
         </div>
-        <div class="d-flex gap-3">
-            <form action="customerdetails">
-            <button class="order-button">button</a></button>
-            </form>
-            <p class="total">Total: ₱100</p>
+
+
+        <div class="d-flex gap-4 justify-between">
+
+            <a class="btn btn-lg" href="{{ asset('customerdetails')}}" role="button">Order</a>
+            <p class="total mt-4 d-flex flex-column justify-content-between py-4 px-4" style="position:absolute; right:15%; top:80%; transform:translate(-0%,-1%); ">Total: ₱100</p>
+
+
         </div>
+
     </div>
 </div>
-
 @endsection
 
-   
-   
+
+
+

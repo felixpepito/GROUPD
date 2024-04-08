@@ -1,38 +1,29 @@
-@extends('layouts.customerdetails')
+@extends('layouts.main')
 
-@section('customerdetails-content')
-<div class="menu-container">
-        
 
-        <div class="Order-Menu d-flex flex-column justify-content-between py-3 px-3">
-                   
-        <form action="cartdetails"  >
-                
-                    <h1> Customer Details</h1>
-            
-                            <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="phone" name="phone" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Next</button>
-                </form>
-            </div>
+@section('extra')
+
+<div class="contenter d-flex pt-5">
+    <div class="col-md-4 m-auto">
+        <div class="bg-white shadow p-3 mb-4 bg-body-tertiary  rounded">
+            <form>
+                <h1> Customer Details</h1><br>
+                      <div class="mb-2">
+                                   <input type="text" class="form-control" id="name" name="name" required   placeholder="Name"><br>
+                               </div>
+                               <div class="mb-3">
+                                   <input type="email" class="form-control" id="email" name="email" required placeholder="Email"><br>
+                               </div>
+                               <div class="mb-3">
+                                   <input type="text" class="form-control" id="address" name="address" required placeholder="Address"><br>
+                               </div>
+                               <div class="mb-3 text-center">
+                                   <input type="text" class="form-control" id="phone" name="phone" required placeholder="Phone"><br>
+                                   <a class="btn btn-lg" href="{{ asset('cartdetails')}}" role="button">Next</a>
+                           </form>
+
         </div>
-            
-                
-                    
-    @endsection
+    </div>
+    </div>
+@endsection
 
-     
