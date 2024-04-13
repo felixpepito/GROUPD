@@ -3,9 +3,9 @@
 
 @section('extra')
 
-<div class="contenter d-flex pt-5">
+<div class="container d-flex pt-5x ">
     <div class="col-md-4 m-auto">
-        <div class="bg-white shadow p-3 mb-4 bg-body-tertiary  rounded">
+        <div class=" mydiv bg-white shadow p-3 mb-4 bg-body-tertiary  rounde" style="border-radius: 30px;">
             <form>
                 <h1> Customer Details</h1><br>
                       <div class="mb-2">

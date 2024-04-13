@@ -4,7 +4,7 @@
 
 
 <div class="menu-container  ">
-    <div class="Order-Menu mt-4 d-flex flex-column justify-content-between py-5 px-4" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-40%);">
+    <div class="Order-Menu mt-3 d-flex flex-column justify-content-between py-5 px-4" style="position:absolute; left:55%; top:50%; transform:translate(-50%,-19.6%);">
         <div>
             <h1>Cart Details</h1>
 

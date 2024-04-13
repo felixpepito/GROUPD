@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('extra')
+@section('content')
     <div class="menu-container " >
         <div class="menu-item">
             <img class="fried-chicken" src="{{ asset('img/manok-1-CGd.png') }}" alt="Fried Chicken">
@@ -98,7 +98,7 @@
         </div>
 
 
-        <div class="d-flex gap-4 justify-between">
+        <div class="    xd-flex gap-4 justify-between">
 
             <a class="btn btn-lg" href="{{ asset('customerdetails')}}" role="button">Order</a>
             <p class="total mt-4 d-flex flex-column justify-content-between py-4 px-4" style="position:absolute; right:15%; top:80%; transform:translate(-0%,-1%); ">Total: ₱100</p>
