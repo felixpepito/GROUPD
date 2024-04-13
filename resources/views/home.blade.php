@@ -1,11 +1,11 @@
 
 @extends('layouts.main')
 
-@section('extra')
+@section('content')
 
 
-<div class="container mt-4">
-    <div class="row">
+<div class="container mt-4 " style="position:absolute; left:35%; top:50%; transform:translate(-50%,-50%);">
+ <div class="row">
         <div class="col-md-12 offset-md-2">
             <div class="card">
                 <div class="card-body">
@@ -16,13 +16,14 @@
                     <p class="card-text text-center">This is your home page content. Customize it as needed.</p> 
                     <p class="card-text text-center">This is your home page content. Customize it as needed.</p> 
                     <p class="card-text text-center">This is your home page content. Customize it as needed.</p>  
-                       <div><br><br><br><br><br>
-                      <a class="btn" href="{{ asset('admin')}}" role="button">Admin</a>
-                      <a class="btn " href="{{ asset('mainpage')}}" role="button">Order Now</a>
-                        </div>
+                       <div><br><br><br><br><br></div>
+                       <a class="btn mx-5" href="{{ asset('mainpage')}}" role="button">Order Now</a>
+                        
+                      <a class="btn mx-5"  href="{{ asset('admin')}}" role="button">Admin       </a>
+                      
                  </div>
             </div>
         </div>
-    </div>x
+    </div>
 </div>
 @endsection

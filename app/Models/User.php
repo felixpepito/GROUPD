@@ -1,45 +1,28 @@
+
+
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Http\Request;
+use App\Models\user;
 
-class User extends Authenticatable
+class userController extends Controller
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    public function store(Request $request)
+    {
+        // Validate form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:customers,email',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+        ]);
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+        // Create a new customer record
+        $customer = user::create($validatedData);
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+        // Optionally, you can redirect the user to another page after successful submission
+        return redirect()->route('user')->with('success', 'Customer details saved!');
+    }
 }

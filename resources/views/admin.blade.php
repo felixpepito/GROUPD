@@ -1,14 +1,16 @@
-@extends('layouts.main')
 
+
+@extends('layouts.main')
 
 @section('extra')
 
 
-<div class="container mt-3  "style="position:absolute; left:50%; top:40%; transform:translate(-50%,-50%);">  ">
-    <div class="col-md-4 m-auto">
+<div class="container mt-4" style="position:absolute; left:50%; top:50%; transform:translate(-45%,-10%);">
+    <div class="row">
+        <div class="col-md-6 offset-md-2">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Admin Login</h2>
+                <h2 class="card-title text-center mb-4">Admin Login</h2>
                     <form method="POST" action="#">
                         <div class="row">
                        <input type="email" id="email" name="email" class="form-control" required placeholder= "Email">
@@ -16,9 +18,10 @@
                         <div class="mb-3">
                             <input type="password" id="password" name="password" class="form-control" required placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </form>
-                </div>
+                        <a class="btn btn-lg" href="#" role="button">Login</a>
+                    </form></a>
+                        </div>
+                 </div>
             </div>
         </div>
     </div>
