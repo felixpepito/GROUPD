@@ -50,7 +50,7 @@ body {
         border: 1px solid #ccc;
         width: 346.61px;
         border-radius: 20px;
-        height: 655px;
+        height: 595px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         z-index: 999; /* Ensure it's above other elements */
     }
@@ -70,9 +70,9 @@ body {
 
 
 
-    .btn {
+    .btn-cta {
         background-color: #e07c09;
-        color: #fff;
+        color: white;
         font-weight: bold;
         padding: 10px 20px;
         font-size: 22px;
@@ -81,20 +81,15 @@ body {
         transition: background-color 0.3s ease;
 
     }
-
-
-
-
-
-    .order-button:hover {
+  .order-button:hover {
        background-color: #ffff;
-       color: black;
+       color: white;
        border-radius: 50px;
 
 
     }
  .order-button {
-    display: block;
+    display: white;
     margin: 0 auto;
 
 }

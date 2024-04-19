@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productsController;
-use App\Http\Controllers\userController;
+
 
 
 
@@ -41,16 +41,18 @@ Route::get('/ordersuccess', function () {
     return view('ordersuccess');
 });
 
+Route::get('/adminlogin', function () {
+    return view('adminlogin');
+});
+
 Route::get('/home', function () {
     return view('home');
 });
+
 
 Route::get('/admin', function () {
     return view('admin');
 });
 
-
-
 Route::get('/mainpage', [productsController::class, 'index'])->name('mainpage');
 
-Route::post('/store-usre', [userController::class, 'store'])->name('store.customer');

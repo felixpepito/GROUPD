@@ -1,0 +1,40 @@
+
+.navbar {
+
+    background-color:whitesmoke; 
+}
+
+.navbar-brand img {
+    max-width: 180px; 
+    height: auto; 
+}
+
+.navbar-heading {
+    font-size: 2rem; 
+    color: #fff;
+    text-align: center; 
+    margin-top: 10px; 
+}
+
+@media (max-width: 768px) {
+  
+    .navbar-heading {
+        font-size: 1.5rem; 
+    }
+}
+ 
+ body {
+    background-color:white;
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0; 
+    padding: 0; 
+   
+  }
+  .btn-custom-orange {
+    background-color: orange;
+    color: white; /* Text color */
+    /* Add any other desired styles */
+}
+
