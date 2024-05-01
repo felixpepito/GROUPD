@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\productsController;
+use App\Http\Controllers\ProductsController;
 
 
 
@@ -50,9 +50,15 @@ Route::get('/home', function () {
 });
 
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/admindashboard', function () {
+    return view('admindashboard');
 });
 
-Route::get('/mainpage', [productsController::class, 'index'])->name('mainpage');
+Route::get('/addproduct', function () {
+    return view('addproduct');
+});
+
+// kani sa pag add og products
+Route::get('/mainpage', [ProductsController::class, 'index'])->name('mainpage');
+Route::post('/addproduct', [ProductsController::class, 'store'])->name('addproduct.store');
 

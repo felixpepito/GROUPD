@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->date('Order_DATE');
+            $table->decimal('Total', 10, 2); // Define Total as a decimal type with 10 digits in total and 2 decimal places
             $table->timestamps();
         });
     }
@@ -25,4 +26,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('orders');
     }
-};
+}

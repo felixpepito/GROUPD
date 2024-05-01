@@ -17,7 +17,7 @@
                     <input type="text" class="form-control" id="address" name="address" required placeholder="Address"><br>
                 </div>
                 <div class="mb-3 text-center ">
-                    <input type="text" class="form-control" id="phone" name="phone" required placeholder="Phone"><br>
+                    <input type="text" class="form-control" id="phone_contact" name="phone" required placeholder="Phone"><br>
                     <a class=" btn-cta text-decoration-none text-white me-5" href="{{ asset('cartdetails') }}" role="button ">Next</a>
                     <a class=" btn-cta text-decoration-none text-white " href="{{ asset('mainpage') }}" role="button">Back</a>
                 </div>

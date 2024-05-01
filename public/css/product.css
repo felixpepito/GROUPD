@@ -1,0 +1,70 @@
+/* styles.css */
+
+/* Navbar Styles */
+.navbar {
+    padding: 10px;
+}
+
+.navbar-dark {
+    background-color: #343a40;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+/* Form Container Styles */
+.container {
+    margin-top: 50px;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+/* Form Styles */
+.form {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+textarea.form {
+    height: 100px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

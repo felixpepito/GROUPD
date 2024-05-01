@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="card-body">
                 <h2 class="card-title text-center mb-4">Admin Login</h2>
-                    <form method="POST" action="#">
+                    <form method="POST" action="">
                         <div class="row">
                        <input type="email" id="email" name="email" class="form-control" required placeholder= "Email">
                         </div><br>
                         <div class="mb-3">
                             <input type="password" id="password" name="password" class="form-control" required placeholder="Password">
                         </div>
-                        <a class="btn-cta text-decoration-none text-white" href="admin" role="button">Login</a>
+                        <a class="btn-cta text-decoration-none text-white" href="admindashboard" role="button">Login</a>
                     </form></a>
                         </div>
                  </div>

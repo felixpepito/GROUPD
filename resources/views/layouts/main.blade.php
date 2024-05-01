@@ -8,7 +8,8 @@
     <link href="{{ asset('css/customer.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/cart.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/order.css')}}" rel="stylesheet" />
-    <link href="{{ asset('css/home.s')}}" rel="stylesheet" />
+    <link href="{{ asset('css/menu.css')}}" rel="stylesheet" />
+    
 </head>
 <body>
     @yield('navbar')
