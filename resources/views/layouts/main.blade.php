@@ -9,7 +9,7 @@
     <link href="{{ asset('css/cart.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/order.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/menu.css')}}" rel="stylesheet" />
-    
+    <script src="{{ asset('js/order.js') }}"></script>
 </head>
 <body>
     @yield('navbar')
