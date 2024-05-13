@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminAuthMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,16 +30,8 @@ Route::get('/ordersuccess', function () {
     return view('ordersuccess');
 });
 
-Route::get('/adminlogin', function () {
-    return view('adminlogin');
-});
-
 Route::get('/home', function () {
     return view('home');
-});
-
-Route::post('/admindashboard', function () {
-    return view('admindashboard');
 });
 
 Route::get('/addproduct', function () {
@@ -48,13 +41,20 @@ Route::get('/addproduct', function () {
 Route::get('/mainpage', [ProductsController::class, 'index'])->name('mainpage');
 Route::post('/addproduct', [ProductsController::class, 'store'])->name('addproduct.store');
 
-Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+// delete products
+Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
+// for customer
+Route::get('/customers',[CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
 
 // Admin Login Routes
-Route::get('/adminlogin', [AdminController::class, 'showLoginForm'])->name('adminlogin');
-Route::post('/adminlogin', [AdminController::class, 'login'])->name('adminlogin.submit');
-Route::post('/adminlogout', [AdminController::class, 'logout'])->name('admin.logout');
+Route::get('/adminlogin', [AdminController::class, 'index'])->name('adminlogin');
+Route::post('/adminlogin', [AdminController::class, 'login']);
+Route::get('/admin-logout', [AdminController::class, 'adminlogout'])->name('admin-logout');
 
-Route::get('/admindashboard', [DashboardController::class, 'post'])->name('admindashboard')->middleware('admin');
+// Admin Dashboard Route
+Route::middleware('auth')->group(function () {
+    Route::get('/admindashboard', [AdminController::class, 'showProducts'])->name('admindashboard');
+});

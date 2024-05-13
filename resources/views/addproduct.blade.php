@@ -41,7 +41,7 @@
                     <input type="number" class="form-control" id="Product_PRICE" name="Product_PRICE" step="0.01" required placeholder="Price">
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Product Image</label>x    
+                    <label for="image" class="form-label">Product Image</label>
                     <input type="file" class="form-control" id="Image_Name" name="Image_Name" accept="image/*" required placeholder="Product Image">
                 </div>
                 <button type="submit" class="btn btn-primary">Add Product</button>

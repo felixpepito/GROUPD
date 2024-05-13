@@ -71,16 +71,39 @@
                               Orders
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
-                                    
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                        </div>
-                    </div>
-                </footer>
+                            <table id="datatablesSimple" class="table">
+                            <table id="datatablesSimple" class="table">
+                            <table id="datatablesSimple" class="table">
+    <tbody>
+@foreach ($products as $product)
+<tr>
+    <td>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <p>₱ {{ $product->Product_PRICE }} {{ $product->Product_NAME }}</p>
+            </div>
+            <div>
+                <img class="fried-chicken" src="{{ asset('img/'. $product->Image_Name) }}" alt="Fried Chicken" width="50px" height="50px">
+            </div>
+            <div>
+                <!-- Delete Button -->
+                <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
             </div>
         </div>
-@endsection
+    </td>
+</tr>
+@endforeach
+    </div>
+      </div>
+       </div>
+        </main>
+         </div>
+          </div>
+           </footer>
+            </div>
+            </div>
+             @endsection
