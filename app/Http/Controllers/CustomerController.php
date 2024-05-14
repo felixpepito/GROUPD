@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Customers;
 
 class CustomerController extends Controller
 {
@@ -12,6 +13,8 @@ class CustomerController extends Controller
         $customers = Customer::all();
         return view('customer.index', compact('customers'));
     }
+
+   
 
     public function create()
     {
@@ -29,6 +32,6 @@ class CustomerController extends Controller
 
         Customer::create($request->all());
 
-        return redirect()->route('cartdetails'); 
+        return redirect()->route('cartdetails.store'); 
     }
 }

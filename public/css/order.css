@@ -37,8 +37,47 @@ body {
     border-radius: 10px;
     font-weight: bold;
     position:auto;
+    
 }
 
 .button:hover {
     color:white;
+}
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.menu-item {
+    width: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.Order-Menu {
+    max-height: 400px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+
+.order-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.total {
+    text-align: right;
+}
+.order-list td:nth-child(4) img {
+    width: 50px;
+    height: 50px;
+}
+.delete-button {
+    background-color:#940b0b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }

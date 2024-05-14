@@ -3,60 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class CartController extends Controller
 {
-    public function index()
+    public function show()
     {
-        $cartItems = Cart::all();
-        return view('cart.index', compact('cartItems'));
-    }
-
-    public function create()
-    {
-        return view('cart.create');
+        return view('cartdetails'); // Assuming 'cart.index' is the view name
     }
 
     public function store(Request $request)
     {
         // Validate the request
         $request->validate([
-            // Add validation rules for the fields
+            'Order_Number' => 'required',
+            'Customer_Name' => 'required',
+            'User_Contact_No' => 'required',
+            'id' => 'required',
+            'Product_Price' => 'required',
+            'Product_Quantity' => 'required',
+            'Product_Name' => 'required',
+            'Product_Total' => 'required',
         ]);
 
-        // Create a new cart item
-        Cart::create([
-            // Assign values from the request
-        ]);
+        // Create a new order instance
+        $order = Order::create($request->all());
 
-        return redirect()->route('cart.index')->with('success', 'Cart item created successfully');
-    }
-
-    public function edit($id)
-    {
-        $cartItem = Cart::findOrFail($id);
-        return view('cart.edit', compact('cartItem'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Find the cart item by id
-        $cartItem = Cart::findOrFail($id);
-
-        // Update the cart item
-        $cartItem->update([
-            // Update fields based on request
-        ]);
-
-        return redirect()->route('cart.index')->with('success', 'Cart item updated successfully');
-    }
-
-    public function destroy($id)
-    {
-        // Find the cart item by id and delete it
-        $cartItem = Cart::findOrFail($id);
-        $cartItem->delete();
-
-        return redirect()->route('cart.index')->with('success', 'Cart item deleted successfully');
+        return redirect()->route('ordersuccess')->with('success', 'Order placed successfully');
     }
 }

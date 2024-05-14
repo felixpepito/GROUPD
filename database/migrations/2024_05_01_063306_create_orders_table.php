@@ -13,12 +13,14 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->date('Order_DATE');
-            $table->decimal('Total', 10, 2); // Define Total as a decimal type with 10 digits in total and 2 decimal places
+            $table->string('product_name');
+            $table->decimal('product_price', 10, 2); // Define product_price as a decimal type with 10 digits in total and 2 decimal places
+            $table->date('order_date'); // Use lowercase for column names, e.g., 'order_date' instead of 'Order_DATE'
+            $table->decimal('total', 10, 2); // Define total as a decimal type with 10 digits in total and 2 decimal places
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

@@ -32,7 +32,7 @@ class AdminController extends Controller
 
         // Redirect back to login page with error message if authentication fails
         return redirect('/adminlogin')->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'The provided credentials does not match our records.',
         ])->withInput($request->only('email'));
     }
 
