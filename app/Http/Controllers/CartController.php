@@ -9,12 +9,11 @@ class CartController extends Controller
 {
     public function show()
     {
-        return view('cartdetails'); // Assuming 'cart.index' is the view name
+        return view('cartdetails'); 
     }
 
     public function store(Request $request)
     {
-        // Validate the request
         $request->validate([
             'Order_Number' => 'required',
             'Customer_Name' => 'required',
@@ -26,7 +25,6 @@ class CartController extends Controller
             'Product_Total' => 'required',
         ]);
 
-        // Create a new order instance
         $order = Order::create($request->all());
 
         return redirect()->route('ordersuccess')->with('success', 'Order placed successfully');

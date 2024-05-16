@@ -22,4 +22,13 @@ class OrderController extends Controller
 
         return response()->json(['message' => 'Order placed successfully'], 200);
     }
+
+
+    function showOrder() {
+        $products = Order::all();
+        return view('orders', ['products' => $products]);
+
+
+
+    }
 }
