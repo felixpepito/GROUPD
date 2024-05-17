@@ -74,7 +74,7 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Product updated successfully.');
+        return redirect()->route('admindashboard')->with('success', 'Product updated successfully.');
     }
 
     public function destroy($id)

@@ -7,7 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminAuthMiddleware;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\AdmindashboardController;
+use App\Http\Controllers\AuthController;
 
 
 
@@ -62,8 +63,8 @@ Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->na
 
 
 // for customer
-Route::get('/customer',[CustomerController::class, 'index'])->name('customer.index');
-Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
+Route::get('/customer',[CustomerController::class, 'index'])->name('customers.index');
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::post('/customer/store', [CustomerController::class, 'store'])->name('customers.store');
 
 // Route to display the cart details form
@@ -76,8 +77,16 @@ Route::post('/adminlogin', [AdminController::class, 'login']);
 Route::get('/admin-logout', [AdminController::class, 'adminlogout'])->name('admin-logout');
 
 // Admin Dashboard Route
-Route::middleware('auth')->group(function () {
-    Route::get('/admindashboard', [AdminController::class, 'showProducts'])->name('admindashboard');
-});
+Route::get('/adminlogin', [AdminController::class, 'index'])->name('adminlogin');
+Route::post('/adminlogin', [AdminController::class, 'login'])->name('adminlogin');
+// routes/web.php
 
-// admindashboard
+Route::get('/logout', 'AuthController@logout')->name('logout');
+
+
+Route::middleware([AdminAuthMiddleware::class])->group(function () {
+    Route::get('/admindashboard', [AdmindashboardController::class, 'admindashboard'])->name('admindashboard');
+    Route::get('/adminlogout', [AdminController::class, 'adminlogout'])->name('adminlogout')->middleware('auth');
+    
+    // Add other admin-only routes here
+});

@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Products; // Import your Product model
+use App\Models\Products;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -25,41 +25,53 @@ class AdminController extends Controller
 
         // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
-            // Regenerate session data and redirect to intended URL
-            $request->session()->regenerate();
-            return redirect()->intended('admindashboard');
+            // Check if the authenticated user is an admin
+            if (Auth::user()->isAdmin()) {
+                // Authentication successful; generate login session for admin
+                $request->session()->regenerate();
+
+                // Redirect to the admin dashboard
+                return redirect()->intended('admindashboard');
+            } else {
+                // Not an admin; logout and redirect back with error message
+                Auth::logout();
+                return redirect('/adminlogin')->withErrors([
+                    'email' => 'You are not authorized as an admin.',
+                ])->withInput($request->only('email'));
+            }
         }
 
         // Redirect back to login page with error message if authentication fails
         return redirect('/adminlogin')->withErrors([
-            'email' => 'The provided credentials does not match our records.',
+            'email' => 'The provided credentials do not match our records.',
         ])->withInput($request->only('email'));
     }
 
     // Handle the admin logout request
     public function adminlogout(Request $request)
     {
-        // Logout the user, invalidate session, and regenerate CSRF token
+        // Logout the authenticated admin
         Auth::logout();
+
+        // Flush all session data and regenerate the CSRF token
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        // Redirect to the admin login page
         return redirect('/adminlogin');
     }
 
     // Display the admin dashboard
     public function admindashboard()
     {
-        // Logic for displaying admin dashboard
-        return view('admindashboard');
-    }
-    public function showProducts()
-    {
-        // Retrieve all products from the database
-        $products = Products::all();
+        // Check if the user is authenticated as an admin
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
+            // Redirect to admin login page if not authenticated as admin
+            return redirect('/adminlogin')->with('error', 'Unauthorized Access');
+        }
 
-        // Pass the products data to the view and render the admin dashboard
+        // Get all products from the database
+        $products = Products::all();
         return view('admindashboard', ['products' => $products]);
     }
-
-
 }

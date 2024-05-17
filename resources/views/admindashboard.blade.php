@@ -2,6 +2,16 @@
 
 @section('extra')
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        @if(Auth::check() && Auth::user()->isAdmin())
+            <!-- Admin Dashboard Content Here -->
+            <!-- Example: Display orders -->
+            @foreach($orders as $order)
+                <!-- Display Order Details -->
+            @endforeach
+        @else
+            <p>Unauthorized Access. Please <a href="{{ asset('adminlogin') }}">login as admin</a>.</p>
+        @endif
+
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
             <i class="fas fa-bars"></i>
         </button>
@@ -25,7 +35,7 @@
                         <hr class="dropdown-divider" />
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ asset('home')}}">Logout</a>
+                        <a class="dropdown-item" href="{{ route('admin-logout') }}">Logout</a>
                     </li>
                 </ul>
             </li>
@@ -36,11 +46,11 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4 py-5 text-decoration-none text-white">Admin dashboard</h1>
+                <h1 class="mt-4 py-5 text-decoration-none text-white">Admin Dashboard</h1>
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Oders</div>
+                            <div class="card-body">Orders</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 <a class="small text-white stretched-link" href="orders">View Details</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -65,8 +75,6 @@
                             </div>
                         </div>
                     </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">
@@ -84,14 +92,12 @@
                                                     <p>₱ {{ $product->Product_PRICE }} {{ $product->Product_NAME }}</p>
                                                 </div>
                                                 <div>
-                                                    <img class="fried-chicken" src="{{ asset('img/'. $product->Image_Name) }}"
-                                                        alt="Fried Chicken" width="50px" height="50px">
+                                                    <img class="product-image" src="{{ asset('img/'. $product->Image_Name) }}"
+                                                        alt="{{ $product->Product_NAME }}" width="50" height="50">
                                                 </div>
                                                 <div>
-                                                    <a href="{{ route('products.edit', $product->id) }}"
-                                                        class="btn btn-primary btn-sm">Edit</a>
-                                                    <form action="{{ route('products.destroy', $product->id) }}"
-                                                        method="POST" style="display: inline;">
+                                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

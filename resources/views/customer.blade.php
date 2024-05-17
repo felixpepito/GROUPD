@@ -20,12 +20,12 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4 py-5 text-decoration-none text-white">Admin dashboard</h1>
-                <div class="row">
+            <h1 class="mt-4 py-5 text-decoration-none text-white">Admin dashboard</h1>
+              <div class="row">
                 </div>
-                <div class="card mb-4">
+                  <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-users me-1"></i>
+                      <i class="fas fa-users me-1"></i>
                         Customers
                     </div>
                     <div class="card-body">
@@ -48,7 +48,7 @@
                                         <td>
                                         </td>
                                     </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
