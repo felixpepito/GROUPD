@@ -6,11 +6,17 @@
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></form>
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="{{ asset('admindashboard')}}">Dashboard</a></li>
-            </ul>
+           <a class="dropdown-item" href="{{ route('admindashboard') }}">Dashboard</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('orders') }}">Orders</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('addproduct') }}">Add Product</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('customer') }}">Customers</a>
+                </li>
         </li>
     </ul>
 </nav>
@@ -20,7 +26,7 @@
         <div class="container-fluid px-4">
             <h1 class="mt-4 py-5 text-white">Orders</h1>
             <div class="row" id="orders-container">
-                @foreach ($products as $order)
+                @foreach ($orders as $order)
                 <div class="col-xl-3 col-md-6 order-card" id="order-{{ $order->id }}">
                     <div class="card bg-white text-dark mb-4">
                         <div class="card-body">

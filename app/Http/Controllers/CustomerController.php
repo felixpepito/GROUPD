@@ -39,12 +39,13 @@ class CustomerController extends Controller
 
         return response()->json(['success' => true]);
     }
-
-    public function deleteOrder($id)
+    
+    public function destroy($id)
     {
-        $order = Order::findOrFail($id);
-        $order->delete();
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
 
-        return response()->json(['success' => true]);
+        return redirect()->back()->with('success', 'Product deleted successfully.');
     }
+
 }
