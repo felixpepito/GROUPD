@@ -5,10 +5,10 @@
     <div class="midiv Order-Menu mt-6 d-flex flex-column justify-content-between py-5 px-5"style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); height: 550px;">
         <h1 class="success">Order Success</h1>
         <div class="order">
-            <label for="order_number" class="form-label">Order Number:</label>
+            <label for="order_number" class="form-label">ID:</label>
         </div>
         <div class="student">
-            <label for="student_name" class="form-label">Student Name:</label>
+            <label for="student_name" class="form-label">Total:</label>
         </div>
         <div class="id">
             <label for="student_id" class="form-label">Student ID:</label>

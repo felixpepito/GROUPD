@@ -34,7 +34,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Address</th>
+                                    <th>ID_Number</th>
                                     <th>Phone_Contact</th>
                                 </tr>
                             </thead>
@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->email }}</td>
-                                        <td>{{ $customer->address }}</td>
+                                        <td>{{ $customer->ID_Number }}</td>
                                         <td>{{ $customer->phone_contact }}</td>
                                         <td>
                                         </td>

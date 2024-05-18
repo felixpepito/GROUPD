@@ -22,13 +22,32 @@ class OrderController extends Controller
 
         return response()->json(['message' => 'Order placed successfully'], 200);
     }
-
-
-    function showOrder() {
+    public function showOrder()
+    {
         $products = Order::all();
         return view('orders', ['products' => $products]);
+    }
 
+    public function index()
+    {
+        $orders = Order::where('status', false)->get();
+        return view('orders.index', compact('orders'));
+    }
 
+    public function markAsComplete($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = true;
+        $order->save();
 
+        return response()->json(['success' => true]);
+    }
+
+    public function deleteOrder($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return response()->json(['success' => true]);
     }
 }

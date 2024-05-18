@@ -43,8 +43,12 @@ Route::get('/home', function () {
 Route::get('/addproduct', function () {
     return view('addproduct');
 });
-
+// order and orderdelete
 Route::get('/orders', [OrderController::class, 'showOrder'])->name('orders.showOrder');
+Route::get('/orders', [OrderController::class, 'showOrder'])->name('orders.showOrder');
+Route::post('/orders/{id}/complete', [OrderController::class, 'markAsComplete'])->name('orders.complete');
+Route::delete('/orders/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
+
 
 Route::get('/mainpage', [ProductsController::class, 'index'])->name('mainpage');
 Route::post('/addproduct', [ProductsController::class, 'store'])->name('addproduct.store');
@@ -65,7 +69,7 @@ Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->na
 // for customer
 Route::get('/customer',[CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('customers.create');
-Route::post('/customer/store', [CustomerController::class, 'store'])->name('customers.store');
+Route::post('/ordersuccess', [CustomerController::class, 'store'])->name('customers.store');
 
 // Route to display the cart details form
 Route::get('/cartdetails', [CartController::class, 'show'])->name('cartdetails.show');
@@ -87,6 +91,8 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::get('/admindashboard', [AdmindashboardController::class, 'admindashboard'])->name('admindashboard');
     Route::get('/adminlogout', [AdminController::class, 'adminlogout'])->name('adminlogout')->middleware('auth');
+    
+
     
     // Add other admin-only routes here
 });
