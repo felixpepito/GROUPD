@@ -11,7 +11,6 @@ use App\Http\Controllers\AuthController;
 use App\Models\Customer;
 
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -46,6 +45,7 @@ Route::post('/orders/{id}/complete', [OrderController::class, 'markAsComplete'])
 Route::delete('/orders/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
 
 
+
 Route::get('/mainpage', [ProductsController::class, 'index'])->name('mainpage');
 Route::post('/addproduct', [ProductsController::class, 'store'])->name('addproduct.store');
 
@@ -69,9 +69,6 @@ Route::get('/customer/create', [CustomerController::class, 'create'])->name('cus
 Route::post('/ordersuccess', [CustomerController::class, 'store'])->name('customers.store');
 Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
-// Route to display the cart details form
-Route::get('/cartdetails', [CartController::class, 'show'])->name('cartdetails.show');
-Route::post('/cartdetails', [CartController::class, 'store'])->name('cartdetails.store');
 
 // Admin Login Routes
 Route::get('/adminlogin', [AdminController::class, 'index'])->name('adminlogin');

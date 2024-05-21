@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('extra')
+
 <nav class="sb-topnav navbar navbar-expand">
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></form>
@@ -30,8 +31,10 @@
                 <div class="col-xl-3 col-md-6 order-card" id="order-{{ $order->id }}">
                     <div class="card bg-white text-dark mb-4">
                         <div class="card-body">
-                            <p>Product: {{ $order->product_name }}</p>
+                            <p>Product name: {{ $order->product_name }}</p>
+                            <p>id: {{$order->order_id}}</p>
                             <p>Price: ₱ {{ $order->product_price }}</p>
+                            <p>Quantity: {{$order->quantity}}</p>
                             <p>Date: {{ $order->order_date }}</p>
                             <p>Total: ₱ {{ $order->total }}</p>
                             <p>Status: <span class="order-status">{{ $order->status ? 'Completed' : 'Incomplete' }}</span></p>

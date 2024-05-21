@@ -4,7 +4,7 @@
 <div class="container mt-6 d-flex flex-column justify-content-between py-5 px-5" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-0%); height: 550px;">
     <div class="col-md-4 m-auto">
         <div class="mydiv bg-white shadow p-3 mb-4 bg-body-tertiary rounde" style="border-radius: 30px;">
-            <form method="POST" action="{{ route('customers.store') }}">
+            <form method="POST" action="{{ route('customers.store') }}" onsubmit="return validateEmail()">
                 @csrf
                 
                 <h1>Customer Details</h1><br>
@@ -26,4 +26,19 @@
         </div>
     </div>
 </div>
+
+<script>
+function validateEmail() {
+    var emailField = document.getElementById('email');
+    var email = emailField.value;
+    var gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+    if (!gmailPattern.test(email)) {
+        alert('Please enter a valid @gmail.com email address.');
+        emailField.focus();
+        return false;
+    }
+    return true;
+}
+</script>
 @endsection

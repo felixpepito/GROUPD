@@ -14,7 +14,6 @@
             <label for="student_id" class="form-label">Student ID:</label>
         </div>
         <div class="phone">
-            <label for="cellphone_number" class="form-label">Cellphone Number:</label><br><br>
             <a class=" btn-cta text-decoration-none text-white "  href="{{ asset('mainpage')}}" role="button">Done</a>
         </div>
     </div>

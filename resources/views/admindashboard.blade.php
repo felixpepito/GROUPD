@@ -100,7 +100,7 @@
                                     <td>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
-                                                <p>₱ {{ $product->Product_PRICE }} {{ $product->Product_NAME }}</p>
+                                                <p> {{ $product->Product_NAME }}  ₱   {{ $product->Product_PRICE }}</p>
                                             </div>
                                             <div>
                                                 <img class="product-image" src="{{ asset('img/'. $product->Image_Name) }}"

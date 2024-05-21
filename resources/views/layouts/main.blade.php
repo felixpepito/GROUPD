@@ -11,9 +11,7 @@
     <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
     <script src="{{ asset('js/order.js') }}"></script>
 </head>
-<body>
-    @yield('navbar')
-
+<body> 
     <nav class="navbar bg-white">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div>
@@ -24,13 +22,10 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
-
     <div class="container mt-4">
         @yield('extra')
     </div>
-
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

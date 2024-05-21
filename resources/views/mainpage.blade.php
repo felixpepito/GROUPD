@@ -15,9 +15,10 @@
                 <table class="order-table">
                     <thead>
                         <tr>
-                            <th>|Item|</th>
-                            <th>Price|</th>
-                            <th>Quantity|</th>
+                            <th class= "mx-3">|Item|</th>
+                            <th class= "mx-3">Price|</th>
+                            <th class= "mx-3">Quantity|</th>
+                            <th class= "mx-3">Image|</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -25,11 +26,11 @@
                     </tbody>    
                 </table>
             </div>
-            <div class="d-flex gap-4 justify-between">
-                <a class="btn-cta btn-lg text-decoration-none text-white" style="position: absolute; right: 5%; top:7%; transform: translate(-0%, -1%);" href="{{ asset('home') }}" role="button">Home</a>
-                <a class="btn-cta btn-lg text-decoration-none text-white" style="position: absolute; right:70%; top: 85%; transform: translate(-0%, -1%);" href="{{ asset('customerdetails') }}" onclick="validateOrder(event)" role="button">Order</a>
-                <p class="total" style="position: absolute; right: 15%; top: 89%; transform: translate(-0%, -1%);">Total: ₱<span id="total-price">0.00</span></p>
-            </div>
+            <footer class="order-footer d-flex justify-content-between align-items-center mt-4 p-3" style="background-color: #f8f9fa;">
+                <a class="btn-cta btn-lg text-decoration-none text-white" style="position:absolute; left:85%; top:15%; transform:translate(-50%,-50%);" href="{{ url('/home') }}" role="button">Home</a>
+                <a class="btn-cta btn-lg text-decoration-none text-white"style="position:absolute;left:5%; " href="{{ url('/customerdetails') }}" onclick="validateOrder(event)" role="button">Order</a><br><br><br><br>
+                <p class="total mx-3" style="position:absolute;left:60%;top:69px%;">Total: ₱<span id="total-price">0.00</span></p>
+            </footer>
         </div>
     </div>
     <script>
@@ -104,7 +105,7 @@
             .then(response => {
                 if (response.ok) {
                     alert('Order placed successfully!');
-                    window.location.href = '{{ asset('customerdetails') }}';
+                    window.location.href = '{{ url('/customerdetails') }}';
                 } else {
                     throw new Error('Failed to place order.');
                 }
