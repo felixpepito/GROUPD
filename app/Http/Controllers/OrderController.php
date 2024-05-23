@@ -6,43 +6,53 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+
 class OrderController extends Controller
 {
+    public function showReceipt($orderId)
+    {
+        $order = Order::where('order_id', $orderId)->with('items')->first();
+        return view('receipt', compact('order'));
+    }
+
     public function placeOrder(Request $request)
     {
         $orderItems = $request->input('order_items');
-        $uniqueOrderId = uniqid();
+        $total = 0;
+        $orderId = uniqid();
 
         foreach ($orderItems as $item) {
+            $total += $item['price'] * $item['quantity'];
+            
             Order::create([
-                'order_id' => $uniqueOrderId,
                 'product_name' => $item['name'],
+                'order_id' => $orderId,
                 'product_price' => $item['price'],
                 'quantity' => $item['quantity'],
                 'order_date' => now(),
                 'total' => $item['price'] * $item['quantity'],
+                'status' => false
             ]);
         }
 
-        return response()->json(['message' => 'Order placed successfully'], 200);
+        return response()->json(['success' => true, 'order_id' => $orderId]);
     }
 
-    public function getOrderItems($orderId)
-    {
-        $order = Order::find($orderId);
-
-        if (!$order) {
-            return response()->json(['error' => 'Order not found'], 404);
-        }
-
-        $orderItems = $order->orderItems; // Gamitin ang orderItems method para kunin ang mga kaugnay na order items
-
-        return response()->json(['orderItems' => $orderItems]);
-    }
     public function showOrder()
     {
-        $products = Order::all();
+        $products = Order::with('items')->get();
         return view('orders', ['products' => $products]);
+    }
+
+    public function showSuck()
+    {
+        // Get only orders that are not completed
+        $orders = Order::where('status', false)
+            ->select('order_id', 'product_name', 'product_price','quantity', 'order_date', 'total')
+            ->get();
+        $finalTotal = Order::where('status', false)->sum('total');
+        
+        return view('ordersuccess', ['orders' => $orders, 'finalTotal' => $finalTotal]);
     }
 
     public function index()
@@ -71,11 +81,12 @@ class OrderController extends Controller
     public function deleteAllOrders()
     {
         try {
-            Order::truncate(); // Delete all orders from the orders table
+            Order::truncate();
             return response()->json(['success' => true]);
         } catch (\Exception $e) {
             Log::error('Error deleting all orders: ' . $e->getMessage());
             return response()->json(['error' => 'Failed to delete all orders. Please try again.'], 500);
         }
     }
+
 }

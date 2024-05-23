@@ -57,7 +57,7 @@ body {
 }
 
 .Order-Menu {
-    max-height: 400px;
+    max-height: 700px;
     overflow-y: auto;
     transition: max-height 0.3s ease;
 }

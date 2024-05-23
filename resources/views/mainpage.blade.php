@@ -18,7 +18,7 @@
                             <th class= "mx-3">|Item|</th>
                             <th class= "mx-3">Price|</th>
                             <th class= "mx-3">Quantity|</th>
-                            <th class= "mx-3">Image|</th>
+                            <th class= "mx-3"></th>
                             <th></th>
                         </tr>
                     </thead>
