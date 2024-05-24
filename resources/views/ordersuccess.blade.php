@@ -15,7 +15,7 @@
                         <label class="form-label" style="display: block; opacity: 0.7;"><strong>Product Name:</strong> {{ $order->product_name }} <br>Items: {{ $order->quantity }}</label>
                     </div>
                     <div class="price" style="opacity: 0.7;">
-                        <label class="form-label" style="display: block;"><strong>Price:</strong> ₱{{ number_format($order->product_price, 2) }}</label>
+                        <label class="form-label" style="display: block;"><strong>Price:</strong>{{ number_format($order->product_price, 2) }}</label>
                     </div>
                 </div>
             @endforeach
@@ -26,7 +26,7 @@
             <label class="form-label" style="display: block; text-align: right;"><strong>Total:</strong> ₱{{ number_format($finalTotal, 2) }}</label>
         </div>
         <div class="text-center 1px dashed #ccc;">
-            <a class="btn btn-primary btn-cta text-decoration-none text-white" href="{{ url('/mainpage') }}" role="button">Done</a>
+            <a class="btn  btn-cta text-decoration-none text-white" href="{{ url('/mainpage') }}" role="button">Done</a>
         </div>
     </div>
 </div>

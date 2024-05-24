@@ -2,37 +2,36 @@
 
 @section('extra')
 
-<nav class="sb-topnav navbar navbar-expand">
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></form>
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-           <a class="dropdown-item" href="{{ route('admindashboard') }}">Dashboard</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('orders') }}">Orders</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('addproduct') }}">Add Product</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('customer') }}">Customers</a>
-                </li>
-        </li>
-    </ul>
+<nav class="sb-topnav navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container-fluid">
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3">Admin Dashboard</a>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{ route('admindashboard') }}">Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{ route('orders') }}">Orders</a></li>
+                    <li><a class="dropdown-item" href="{{ route('addproduct') }}">Add Product</a></li>
+                    <li><a class="dropdown-item" href="{{ route('customer') }}">Customers</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin-logout') }}">log out</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
 </nav>
 <div id="layoutSidenav"></div>
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid px-4">
-            <h1 class="mt-4 py-5 text-white">Orders</h1>
+        <div class="container-fluid  mt-4 py-5 ">">
             <div class="row" id="orders-container">
                 @foreach ($orders as $order)
                 <div class="col-xl-3 col-md-6 order-card" id="order-{{ $order->id }}">
                     <div class="card bg-white text-dark mb-4">
                         <div class="card-body">
                             <p>Product name: {{ $order->product_name }}</p>
-                            <p>id: {{$order->order_id}}</p>
+                            <p>ID: {{$order->order_id}}</p>
                             <p>Price: ₱ {{ $order->product_price }}</p>
                             <p>Quantity: {{$order->quantity}}</p>
                             <p>Date: {{ $order->order_date }}</p>
