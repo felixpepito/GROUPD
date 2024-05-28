@@ -12,21 +12,21 @@
             @foreach ($orders as $order)
                 <div class="order-details" style="border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
                     <div class="order">
-                        <label class="form-label" style="display: block; opacity: 0.7;"><strong>Product Name:</strong> {{ $order->product_name }} <br>Items: {{ $order->quantity }}</label>
+                        <label class="form-label" style="display: block; opacity: 0.7;"><strong>Product Name:</strong> {{ $order->product_name }} <br>ID:{{ $order->order_id }}<br>Items: {{ $order->quantity }}</label>
                     </div>
                     <div class="price" style="opacity: 0.7;">
-                        <label class="form-label" style="display: block;"><strong>Price:</strong>{{ number_format($order->product_price, 2) }}</label>
+                        <label class="form-label" style="display: block;"><strong>Price:</strong> ₱{{ number_format($order->product_price, 2) }}</label>
                     </div>
                 </div>
             @endforeach
         @else
             <p class="text-center">No products found.</p>
         @endif
-        <div class="final-total 1px dashed #ccc; " style="border-top: 1px dashed #ccc; padding-top: 10px; opacity: 0.7;">
+        <div class="final-total" style="border-top: 1px dashed #ccc; padding-top: 10px; opacity: 0.7;">
             <label class="form-label" style="display: block; text-align: right;"><strong>Total:</strong> ₱{{ number_format($finalTotal, 2) }}</label>
         </div>
-        <div class="text-center 1px dashed #ccc;">
-            <a class="btn  btn-cta text-decoration-none text-white" href="{{ url('/mainpage') }}" role="button">Done</a>
+        <div class="text-center" style="margin-top: 20px;">
+            <a class="btn-lg btn-danger px-5 text-decoration-none text-white" href="{{ route('Ordercomplete', ['orderId' => $order->order_id]) }}" role="button">Done</a>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
 <nav class="sb-topnav navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="{{ route('admindashboard') }}">Admin Dashboard</a>
+        <a class="navbar-brand ps-3">Admin Dashboard</a>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
@@ -21,12 +21,11 @@
     </div>
 </nav>
 <div id="layoutSidenav">
-</div>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4 py-5 text-decoration-none text-white">Admin dashboard</h1>
-            <div class="row">
+            <h1 class="mt-4  text-decoration-none text-white">Customers</h1>
+            <div class="row mt-4">
             </div>
             <div class="card mb-4">
                 <div class="card-header">
@@ -39,8 +38,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>ID_Number</th>
-                                <th>Phone_Contact</th>
+                                <th>ID Number</th>
+                                <th>Phone Contact</th>
                                 <th>Actions</th> <!-- Added Actions column -->
                             </tr>
                         </thead>

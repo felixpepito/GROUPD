@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -10,13 +11,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id'); // Add product_id column
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade'); // Add foreign key constraint
             $table->string('order_id')->unique();
             $table->integer('quantity');
             $table->date('order_date');
             $table->decimal('total', 8, 2);
-            $table->boolean('status')->default(false);
+            $table->integer('status')->default(1); // Status column to track the order status
             $table->timestamps();
         });
     }

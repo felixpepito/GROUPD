@@ -12,13 +12,13 @@ class AdminAuthMiddleware
         if (!Auth::check()) {
             // Log message to check if user is authenticated
             \Log::info('User not authenticated');
-            return redirect()->route('home')->with('error', 'Unauthorized Access');
+            return redirect()->route('adminlogin')->with('error', 'Unauthorized Access');
         }
 
         if (!Auth::user()->isAdmin()) {
             // Log message to check if user is not an admin
             \Log::info('User is not an admin');
-            return redirect()->route('home')->with('error', 'Unauthorized Access');
+            return redirect()->route('adminlogin')->with('error', 'Unauthorized Access');
         }
 
         // Log message to check if user is authenticated and is an admin

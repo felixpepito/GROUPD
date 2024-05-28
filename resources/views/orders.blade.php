@@ -24,7 +24,9 @@
 <div id="layoutSidenav"></div>
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid  mt-4 py-5 ">">
+    <div class="container-fluid px-4">
+            <h1 class="mt-5  text-decoration-none text-white">Orders</h1>
+            <div class="row mt-5">
             <div class="row" id="orders-container">
                 @foreach ($orders as $order)
                 <div class="col-xl-3 col-md-6 order-card" id="order-{{ $order->id }}">
