@@ -43,8 +43,12 @@ Route::get('/receipt/{orderId}', [OrderController::class, 'showReceipt'])->name(
 Route::post('/placeorder', [OrderController::class, 'placeOrder'])->name('placeorder');
 Route::get('/orders', [OrderController::class, 'showOrder'])->name('orders.showOrder');
 Route::post('/orders/{id}/complete', [OrderController::class, 'markAsComplete'])->name('orders.complete');
+
 Route::delete('/orders/{orderId}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
 Route::get('/completeOrder/{orderId}', [OrderController::class, 'completeOrder'])->name('completeOrder');
+
+
+
 Route::get('/receipt/{orderId}', [OrderController::class, 'showReceipt'])->name('showReceipt');
 
 // Order success route

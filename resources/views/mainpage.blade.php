@@ -28,7 +28,9 @@
             </div>
             <footer class="order-footer d-flex justify-content-between align-items-center mt-4 p-3" style="background-color: #f8f9fa;">
                 <a class="btn-danger btn px-4 text-decoration-none text-white" style="position:absolute; left:83%; top:10%; transform:translate(-50%,-50%);" href="{{ url('/home') }}" role="button">Home</a>
+
                 <a class="btn-danger btn px-4 text-decoration-none text-white" style="position:absolute;left:5%;top:80% " href="{{ url('/customerdetails') }}" onclick="validateOrder(event)" role="button">Order</a><br><br><br><br>
+
                 <p class="total mx-3" style="position:absolute;left:60%;top:80%;">Total: ₱<span id="total-price">0.00</span></p>
             </footer>
         </div>
