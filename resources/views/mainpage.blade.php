@@ -15,10 +15,10 @@
                 <table class="order-table">
                     <thead>
                         <tr>
-                            <th class= "mx-3">|Item|</th>
-                            <th class= "mx-3">Price|</th>
-                            <th class= "mx-3">Quantity|</th> 
-                            <th class= "mx-3"></th>
+                            <th class="mx-3">|Item|</th>
+                            <th class="mx-3">Price|</th>
+                            <th class="mx-3">Quantity|</th> 
+                            <th class="mx-3"></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -27,9 +27,9 @@
                 </table>
             </div>
             <footer class="order-footer d-flex justify-content-between align-items-center mt-4 p-3" style="background-color: #f8f9fa;">
-                <a class="btn-cta btn-lg text-decoration-none text-white" style="position:absolute; left:85%; top:15%; transform:translate(-50%,-50%);" href="{{ url('/home') }}" role="button">Home</a>
-                <a class="btn-cta btn-lg text-decoration-none text-white"style="position:absolute;left:5%; " href="{{ url('/customerdetails') }}" onclick="validateOrder(event)" role="button">Order</a><br><br><br><br>
-                <p class="total mx-3" style="position:absolute;left:60%;top:69px%;">Total: ₱<span id="total-price">0.00</span></p>
+                <a class="btn-danger btn px-4 text-decoration-none text-white" style="position:absolute; left:83%; top:10%; transform:translate(-50%,-50%);" href="{{ url('/home') }}" role="button">Home</a>
+                <a class="btn-danger btn px-4 text-decoration-none text-white" style="position:absolute;left:5%;top:80% " href="{{ url('/customerdetails') }}" onclick="validateOrder(event)" role="button">Order</a><br><br><br><br>
+                <p class="total mx-3" style="position:absolute;left:60%;top:80%;">Total: ₱<span id="total-price">0.00</span></p>
             </footer>
         </div>
     </div>
@@ -54,7 +54,7 @@
             nameCell.textContent = name;
             priceCell.textContent = '₱' + price;
             quantityCell.textContent = 1;
-            imageCell.innerHTML = `<img src="${imageUrl}" alt="${name}" style="width: 50px; height: 50px;">`;
+            imageCell.innerHTML = '<img src="' + imageUrl + '" alt="' + name + '" style="width: 50px; height: 50px;">';
 
             var deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
@@ -70,51 +70,61 @@
             actionCell.appendChild(deleteButton);
         }
 
-        updateTotalPrice(price);
+        updateTotalPrice(parseFloat(price));
     }
 
     function updateTotalPrice(price) {
         var totalPriceElement = document.getElementById('total-price');
         var totalPrice = parseFloat(totalPriceElement.textContent) + parseFloat(price);
-        totalPriceElement.textContent = totalPrice.toFixed(2);
+        totalPriceElement.textContent = totalPrice.toFixed(1);
     }
 
+   
     function validateOrder(event) {
-        var orderList = document.querySelector('.order-list');
+    var orderList = document.querySelector('.order-list');
 
-        if (orderList.rows.length === 0) {
-            event.preventDefault();
-            alert('Please add items to your order.');
-        } else {
-            var orderItems = [];
-            Array.from(orderList.rows).forEach(row => {
-                var itemName = row.cells[0].textContent;
-                var itemPrice = parseFloat(row.cells[1].textContent.replace('₱', ''));
-                var itemQuantity = parseInt(row.cells[2].textContent);
-                orderItems.push({ name: itemName, price: itemPrice, quantity: itemQuantity });
-            });
+    if (orderList.rows.length === 0) {
+        event.preventDefault();
+        alert('Please add items to your order.');
+    } else {
+        var orderItems = [];
+        Array.from(orderList.rows).forEach(row => {
+            var itemName = row.cells[0].textContent;
+            var itemPrice = parseFloat(row.cells[1].textContent.replace('₱', ''));
+            var itemQuantity = parseInt(row.cells[2].textContent);
+            orderItems.push({ name: itemName, price: itemPrice, quantity: itemQuantity });
+        });
 
-            fetch('{{ route('placeorder') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({ order_items: orderItems })
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Order placed successfully!');
-                    window.location.href = '{{ url('/customerdetails') }}';
-                } else {
-                    throw new Error('Failed to place order.');
-                }
-            })
-            .catch(error => {
-                console.error('Order placement error:', error);
-                alert('Failed to place order. Please try again.');
-            });
-        }
+        fetch('/placeorder', { // Change to the correct route for placing orders
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ order_items: orderItems })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Parse the JSON response
+            } else {
+                throw new Error('Failed to place order. Server responded with status ' + response.status);
+            }
+        })
+        .then(data => {
+            // Check if the server returned any specific error message
+            if (data && data.error) {
+                throw new Error(data.error);
+            } else {
+                alert('Order placed successfully!');
+                window.location.href = '{{ url('/customerdetails') }}';
+            }
+        })
+        .catch(error => {
+            console.error('Order placement error:', error);
+            alert('Failed to place order. Please try again.');
+        });
     }
-    </script>
+}
+</script>
+
 @endsection

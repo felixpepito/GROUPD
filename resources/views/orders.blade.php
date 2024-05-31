@@ -36,13 +36,7 @@
                             <p>Quantity: {{$order->quantity}}</p>
                             <p>Date: {{ $order->order_date }}</p>
                             <p>Total: ₱ {{ $order->total }}</p>
-                            <p>Status: <span class="order-status">{{ $order->status ? 'Completed' : 'Incomplete' }}</span></p>
-                            @if (!$order->status)
-                            <form action="{{ route('orders.complete', $order->id) }}" method="POST" class="complete-order-form">
-                                @csrf
-                                <button type="submit" class="btn btn-success">Complete Order</button>
-                            </form>
-                            @endif
+                        
                             <form action="{{ route('orders.delete', $order->id) }}" method="POST" class="delete-order-form mt-2">
                                 @csrf
                                 @method('DELETE')

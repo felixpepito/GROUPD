@@ -10,13 +10,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id'); // Add product_id column
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade'); // Add foreign key constraint
-            $table->string('order_id')->unique();
+            $table->string('order_id');
+            $table->string('product_name');
+            $table->decimal('product_price', 8, 2);
             $table->integer('quantity');
             $table->date('order_date');
             $table->decimal('total', 8, 2);
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default  (2); // Change to boolean for status column
             $table->timestamps();
         });
     }
