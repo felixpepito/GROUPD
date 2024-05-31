@@ -43,13 +43,18 @@ Route::get('/receipt/{orderId}', [OrderController::class, 'showReceipt'])->name(
 Route::post('/placeorder', [OrderController::class, 'placeOrder'])->name('placeorder');
 Route::get('/orders', [OrderController::class, 'showOrder'])->name('orders.showOrder');
 Route::post('/orders/{id}/complete', [OrderController::class, 'markAsComplete'])->name('orders.complete');
-Route::delete('/orders/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
-Route::get('/complete-order/{orderId}', [OrderController::class, 'Ordercomplete'])->name('Ordercomplete');
+
+Route::delete('/orders/{orderId}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
+Route::get('/completeOrder/{orderId}', [OrderController::class, 'completeOrder'])->name('completeOrder');
+
+
+
 Route::get('/receipt/{orderId}', [OrderController::class, 'showReceipt'])->name('showReceipt');
 
 // Order success route
 Route::get('/ordersuccess', [OrderController::class, 'showSuck'])->name('ordersuccess.showSuck');
-
+// para sa pag order button reset data
+Route::put('/completeOrder/{orderId}', [OrderController::class, 'completeOrder'])->name('completeOrder');
 // Product routes
 Route::get('/mainpage', [ProductsController::class, 'index'])->name('mainpage');
 Route::post('/addproduct', [ProductsController::class, 'store'])->name('addproduct.store');
@@ -81,4 +86,3 @@ Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::get('/search', [AdmindashboardController::class, 'search'])->name('search');
     Route::resource('customer', CustomerController::class);
 });
-

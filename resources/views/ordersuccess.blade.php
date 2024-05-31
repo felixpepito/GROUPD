@@ -8,14 +8,31 @@
         </div>
         <p class="text-center mb-4" style="opacity: 0.7;">This is official receipt</p>
         <hr style="border-top: 1px dashed #ccc;">
+        @php
+            $totalK = 0;
+        @endphp
+        
         @if(isset($orders) && $orders->count() > 0)
             @foreach ($orders as $order)
+                @php
+                    $totalK += $order->product_price * $order->quantity;
+                @endphp
                 <div class="order-details" style="border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
                     <div class="order">
+
+                        <label class="form-label" style="display: block; opacity: 0.7;">
+                            <strong>Product Name:</strong> {{ $order->product_name }} <br>ID:{{ $order->order_id }}<br>Items: {{ $order->quantity }}
+                        </label>
+                    </div>
+                    <div class="price" style="opacity: 0.7;">
+                        <label class="form-label" style="display: block;">
+                            <strong>Price:</strong> ₱{{ number_format($order->product_price, 2) }}
+                        </label>
+
                         <label class="form-label" style="display: block; opacity: 0.7;"><strong>Product Name:</strong> {{ $order->product_name }} <br>ID:{{ $order->order_id }}<br>Items: {{ $order->quantity }}</label>
                     </div>
                     <div class="price" style="opacity: 0.7;">
-                        <label class="form-label" style="display: block;"><strong>Price:</strong> ₱{{ number_format($order->product_price, 2) }}</label>
+              
                     </div>
                 </div>
             @endforeach
@@ -23,10 +40,17 @@
             <p class="text-center">No products found.</p>
         @endif
         <div class="final-total" style="border-top: 1px dashed #ccc; padding-top: 10px; opacity: 0.7;">
-            <label class="form-label" style="display: block; text-align: right;"><strong>Total:</strong> ₱{{ number_format($finalTotal, 2) }}</label>
+
+            <label class="form-label" style="display: block; text-align: right;"><strong>Total:</strong> ₱{{ number_format($totalK, 2) }}</label>
         </div>
+        
         <div class="text-center" style="margin-top: 20px;">
-            <a class="btn-lg btn-danger px-5 text-decoration-none text-white" href="{{ route('Ordercomplete', ['orderId' => $order->order_id]) }}" role="button">Done</a>
+        <form action="{{ route('completeOrder', ['orderId' => $order->order_id]) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <button type="submit" class="btn-lg btn-danger px-5 text-decoration-none text-white">Done</button>
+</form>
+
         </div>
     </div>
 </div>
