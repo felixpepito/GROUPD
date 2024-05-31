@@ -90,7 +90,7 @@ public function completeOrder(Request $request, $orderId)
 
     public function showSuck()
     {
-        // Get only orders that are not completed
+        // Get only orders  not completed
         $orders = Order::where('status', false)
             ->select('order_id', 'product_name', 'product_price','quantity', 'order_date', 'total')
             ->get();

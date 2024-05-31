@@ -12,7 +12,7 @@ class AdmindashboardController extends Controller
 {
     public function admindashboard()
     {
-        // Check if user is authenticated and admin
+        // Check if user is admin authenticated
         if (!Auth::check() || !Auth::user()->isAdmin()) {
             return redirect()->route('adminlogin')->with('error', 'Unauthorized Access');
         }

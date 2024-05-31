@@ -23,7 +23,7 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request data
+        // Validate 
         $request->validate([
             'Product_NAME' => 'required|string|max:255',
             'Product_PRICE' => 'required|string',
