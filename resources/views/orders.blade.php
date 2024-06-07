@@ -15,7 +15,6 @@
                     <li><a class="dropdown-item" href="{{ route('addproduct') }}">Add Product</a></li>
                     <li><a class="dropdown-item" href="{{ route('customer') }}">Customers</a></li>
                     <li><a class="dropdown-item" href="{{ route('admin-logout') }}">log out</a></li>
-
                 </ul>
             </li>
         </ul>
@@ -24,27 +23,34 @@
 <div id="layoutSidenav"></div>
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid  mt-4 py-5 ">">
+        <div class="container-fluid mt-4 py-5">
             <div class="row" id="orders-container">
-                @foreach ($orders as $order)
-                <div class="col-xl-3 col-md-6 order-card" id="order-{{ $order->id }}">
-                    <div class="card bg-white text-dark mb-4">
-                        <div class="card-body">
-                            <p>Product name: {{ $order->product_name }}</p>
-                            <p>ID: {{$order->order_id}}</p>
-                            <p>Price: ₱ {{ $order->product_price }}</p>
-                            <p>Quantity: {{$order->quantity}}</p>
-                            <p>Date: {{ $order->order_date }}</p>
-                            <p>Total: ₱ {{ $order->total }}</p>
-                        
-                            <form action="{{ route('orders.delete', $order->id) }}" method="POST" class="delete-order-form mt-2">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete Order</button>
-                            </form>
+                @php
+                    $groupedOrders = collect($orders)->groupBy('order_id');
+                @endphp
+
+                @foreach ($groupedOrders as $orderId => $orderGroup)
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card bg-white text-dark order-card">
+                            <div class="card-body">
+                                <h3 class="card-title">Order ID: {{ $orderId }}</h3>
+                                @foreach ($orderGroup as $order)
+                                    <p>Product name: {{ $order->product_name }}</p>
+                                    <p>ID: {{ $order->order_id }}</p>
+                                    <p>Price: ₱ {{ $order->product_price }}</p>
+                                    <p>Quantity: {{ $order->quantity }}</p>
+                                    <p>Date: {{ $order->order_date }}</p>
+                                    <p>Total: ₱ {{ $order->total }}</p>
+                                @endforeach
+
+                                <form action="{{ route('orders.deleteGroup', $orderId) }}" method="POST" class="delete-order-form mt-2">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete Order</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -54,40 +60,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.complete-order-form').forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const card = this.closest('.order-card');
-            const formData = new FormData(this);
-            const actionUrl = this.action;
-
-            fetch(actionUrl, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': formData.get('_token')
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire({
-                        title: 'Order Completed!',
-                        text: 'The order has been marked as complete.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        card.querySelector('.order-status').textContent = 'Completed';
-                        this.remove(); // Remove the complete order form
-                    });
-                } else {
-                    Swal.fire('Failed!', 'Failed to complete the order. Please try again.', 'error');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    });
-
     document.querySelectorAll('.delete-order-form').forEach(function(form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
