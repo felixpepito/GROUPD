@@ -19,8 +19,8 @@
                 </div>
                 <div class="mb-3 text-center ">
                     <input type="number" class="form-control" id="phone_contact" name="phone_contact" required placeholder="Phone Number"><br>
-                    <button type="submit" class="btn-cta text-decoration-none text-white me-5">Next</button>
-                    <a class="btn-cta text-decoration-none text-white" href="{{ route('mainpage') }}" role="button">Back</a>
+                    <button type="submit" class="btn-danger btn px-5 py-2 text-decoration-none text-white me-5">Next</button>
+                    <a class="btn-danger btn px-5 py-2 text-decoration-none text-white" href="{{ route('mainpage') }}" role="button">Back</a>
                 </div>
             </form>
         </div>

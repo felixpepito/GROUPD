@@ -22,7 +22,8 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-danger px-5 m-4">Login</button>
+                                <a type="back" href="{{ url('/home') }}" class="btn-danger btn px-5 m-4">back</a>
                             </form>
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -10,6 +11,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
             $table->string('order_id');
             $table->string('product_name');
             $table->decimal('product_price', 8, 2);
@@ -17,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->date('order_date');
             $table->decimal('total', 8, 2);
             $table->boolean('status')->default  (2); // Change to boolean for status column
+
+           
             $table->timestamps();
         });
     }

@@ -86,6 +86,18 @@ class OrderController extends Controller
         return view('orders', ['products' => $products]);
     }
 
+    public function Ordercomplete($orderId)
+{
+    $orders = Order::where('order_id', $orderId)->get();
+
+    foreach ($orders as $order) {
+        $order->status = true; // Or 1 if you want to use integers
+        $order->save();
+    }
+
+    return redirect('/mainpage')->with('success', 'Order marked as complete.');
+}
+
     public function showSuck()
     {
         // Get only orders not completed

@@ -43,12 +43,11 @@ Route::get('/receipt/{orderId}', [OrderController::class, 'showReceipt'])->name(
 Route::post('/placeorder', [OrderController::class, 'placeOrder'])->name('placeorder');
 Route::get('/orders', [OrderController::class, 'showOrder'])->name('orders.showOrder');
 Route::post('/orders/{id}/complete', [OrderController::class, 'markAsComplete'])->name('orders.complete');
-
-// New route for deleting a group of orders
-Route::delete('/orders/group/{orderId}', [OrderController::class, 'deleteOrderGroup'])->name('orders.deleteGroup');
-
 Route::delete('/orders/{orderId}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
 Route::get('/completeOrder/{orderId}', [OrderController::class, 'completeOrder'])->name('completeOrder');
+
+
+
 Route::get('/receipt/{orderId}', [OrderController::class, 'showReceipt'])->name('showReceipt');
 
 // Order success route

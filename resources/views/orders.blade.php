@@ -23,7 +23,7 @@
 <div id="layoutSidenav"></div>
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid mt-4 py-5">
+        <div class="container-fluid  mt-4 py-5 ">">
             <div class="row" id="orders-container">
                 @php
                     $groupedOrders = collect($orders)->groupBy('order_id');
