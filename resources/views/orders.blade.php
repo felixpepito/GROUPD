@@ -23,7 +23,7 @@
 <div id="layoutSidenav"></div>
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid  mt-4 py-5 ">">
+        <div class="container-fluid mt-4 py-5 ">
             <div class="row" id="orders-container">
                 @php
                     $groupedOrders = collect($orders)->groupBy('order_id');
@@ -33,21 +33,25 @@
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card bg-white text-dark order-card">
                             <div class="card-body">
-                                <h3 class="card-title">Order ID: {{ $orderId }}</h3>
+                               
                                 @foreach ($orderGroup as $order)
                                     <p>Product name: {{ $order->product_name }}</p>
                                     <p>ID: {{ $order->order_id }}</p>
                                     <p>Price: ₱ {{ $order->product_price }}</p>
-                                    <p>Quantity: {{ $order->quantity }}</p>
+                                    <p>Items: {{ $order->quantity }}</p>
                                     <p>Date: {{ $order->order_date }}</p>
                                     <p>Total: ₱ {{ $order->total }}</p>
+                                    <input type="hidden" name="order_id[]" value="{{ $order->order_id }}">
+                                    <input type="hidden" name="order_date[]" value="{{ $order->order_date }}">
                                 @endforeach
-
-                                <form action="{{ route('orders.deleteGroup', $orderId) }}" method="POST" class="delete-order-form mt-2">
+                        
+                                <div class="text-center mt-4">
+                                <form id="deleteOrderGroupForm" action="{{ route('deleteOrderGroup', ['orderId' => $order->order_id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete Order</button>
+                                  <button type="submit" class="btn btn-danger">Delete Group</button>
                                 </form>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -59,17 +63,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.delete-order-form').forEach(function(form) {
-        form.addEventListener('submit', function(event) {
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('deleteOrderGroupForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const card = this.closest('.order-card');
             const formData = new FormData(this);
             const actionUrl = this.action;
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: 'Do you really want to delete this order? This process cannot be undone.',
+                text: 'Do you really want to delete this group of orders? This action cannot be undone.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
@@ -78,32 +80,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     fetch(actionUrl, {
-                        method: 'DELETE',
-                        body: formData,
-                        headers: {
-                            'X-CSRF-TOKEN': formData.get('_token')
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire({
-                                title: 'Order Deleted!',
-                                text: 'The order has been deleted.',
-                                icon: 'success',
-                                confirmButtonText: 'OK'
-                            }).then(() => {
-                                card.remove();
-                            });
-                        } else {
-                            Swal.fire('Failed!', 'Failed to delete the order. Please try again.', 'error');
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
+                            method: 'DELETE',
+                            body: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': formData.get('_token')
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire('Deleted!', 'The group of orders has been deleted.', 'success').then(() => {
+                                    window.location.href = "{{ route('orders') }}";
+                                });
+                            } else {
+                                Swal.fire('Error!', 'Failed to delete the group of orders. Please try again.', 'error');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.fire('Error!', 'An unexpected error occurred. Please try again.', 'error');
+                        });
                 }
             });
         });
     });
-});
 </script>
+
 @endsection

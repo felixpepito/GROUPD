@@ -11,10 +11,10 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('ID_Number')->nullable();
-            $table->string('phone_contact')->nullable();
-            $table->timestamps();   
+            $table->string('email'); // Remove unique() constraint from here
+            $table->string('ID_Number');
+            $table->string('phone_contact');
+            $table->timestamps();
         });
     }
 

@@ -86,18 +86,6 @@ class OrderController extends Controller
         return view('orders', ['products' => $products]);
     }
 
-    public function Ordercomplete($orderId)
-{
-    $orders = Order::where('order_id', $orderId)->get();
-
-    foreach ($orders as $order) {
-        $order->status = true; // Or 1 if you want to use integers
-        $order->save();
-    }
-
-    return redirect('/mainpage')->with('success', 'Order marked as complete.');
-}
-
     public function showSuck()
     {
         // Get only orders not completed
@@ -116,23 +104,6 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function markAsComplete($id)
-    {
-        $order = Order::findOrFail($id);
-        $order->status = true;
-        $order->save();
-
-        return response()->json(['success' => true]);
-    }
-
-    public function deleteOrder($id)
-    {
-        $order = Order::findOrFail($id);
-        $order->delete();
-
-        return response()->json(['success' => true]);
-    }
-
     public function deleteOrderGroup($orderId)
     {
         try {
@@ -141,17 +112,6 @@ class OrderController extends Controller
         } catch (\Exception $e) {
             Log::error('Error deleting order group: ' . $e->getMessage());
             return response()->json(['error' => 'Failed to delete order group. Please try again.'], 500);
-        }
-    }
-
-    public function deleteAllOrders()
-    {
-        try {
-            Order::truncate();
-            return response()->json(['success' => true]);
-        } catch (\Exception $e) {
-            Log::error('Error deleting all orders: ' . $e->getMessage());
-            return response()->json(['error' => 'Failed to delete all orders. Please try again.'], 500);
         }
     }
 }
